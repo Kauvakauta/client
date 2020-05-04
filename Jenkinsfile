@@ -81,7 +81,7 @@ helpers.rootLinuxNode(env, {
   println "Cause: ${cause}"
   println "Pull Request ID: ${env.CHANGE_ID}"
 
-  ws("${env.GOPATH}/src/github.com/keybase/client") {
+  ws("client") {
 
     stage("Setup") {
       sh "docker rmi keybaseprivate/mysql || echo 'No mysql image to remove'"
@@ -291,7 +291,7 @@ helpers.rootLinuxNode(env, {
                   "TMP=C:\\Users\\Administrator\\AppData\\Local\\Temp",
                   "TEMP=C:\\Users\\Administrator\\AppData\\Local\\Temp",
                 ]) {
-                ws("$GOPATH/src/github.com/keybase/client") {
+                ws("client") {
                   println "Checkout Windows"
                   retry(3) {
                     checkout scm
@@ -328,7 +328,7 @@ helpers.rootLinuxNode(env, {
                   "KEYBASE_PUSH_SERVER_URI=fmprpc://${kbwebNodePrivateIP}:9911",
                   "TMPDIR=${mountDir}",
                 ]) {
-                ws("$GOPATH/src/github.com/keybase/client") {
+                ws("client") {
                   println "Checkout OS X"
                   retry(3) {
                     checkout scm
